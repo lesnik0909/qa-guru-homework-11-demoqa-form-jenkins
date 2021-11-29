@@ -1,0 +1,50 @@
+plugins {
+    id "java"
+    id "io.qameta.allure" version "2.8.1"
+}
+
+group "guru.qa.homework"
+version "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+def aspectjweaverVersion = '1.9.7',
+    junitVersion = "5.8.1",
+    selenideVersion = "5.25.0",
+    javaFakerVersion = "1.0.2",
+    allureVersion = "2.16.1",
+    ownerVersion = "1.0.12"
+
+allure {
+    version = allureVersion
+    autoconfigure = true
+    aspectjweaver = true
+    configuration = "testImplementation"
+    useJUnit5 {
+        version = allureVersion
+    }
+}
+
+dependencies {
+    testImplementation(
+            "org.aspectj:aspectjweaver:${aspectjweaverVersion}",
+            "org.junit.jupiter:junit-jupiter:${junitVersion}",
+            "com.codeborne:selenide:${selenideVersion}",
+            "com.github.javafaker:javafaker:${javaFakerVersion}",
+            "io.qameta.allure:allure-selenide:${allureVersion}",
+            "org.aeonbits.owner:owner:${ownerVersion}",
+    )
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileTestJava {
+    options.encoding("UTF-8")
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
