@@ -10,6 +10,6 @@ public interface ProjectConfig extends Config {
 
   String password();
 
-  String selenideUrl();
+  String selenoidUrl();
 
 }

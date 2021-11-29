@@ -24,7 +24,7 @@ public class BaseTest {
 
     Configuration.browserSize = "1920x1080";
     Configuration.remote = String.format("https://%s:%s@%s/wd/hub/", cfg.login(), cfg.password(),
-        System.getProperty("selenoidUrl", cfg.selenideUrl()));
+        System.getProperty("selenoidUrl", cfg.selenoidUrl()));
     Configuration.browserCapabilities = capabilities;
   }
 
